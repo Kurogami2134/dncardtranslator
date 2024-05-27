@@ -5,6 +5,8 @@ Engine = window.wrappedJSObject.Engine;
 
 function PSCTparseText(desc) {
 	let new_desc = "";
+	
+	desc = desc.replace("&amp;", "&");
 
 	let effects = desc.replaceAll(". ", ".").replaceAll(" />", ">").split(".");
 
@@ -16,8 +18,13 @@ function PSCTparseText(desc) {
 		
 		let line = effects[x];
 		
+		if (!(line.includes(":") || line.includes(";"))) {
+			new_desc += line+". "
+			continue;
+		}
+		
 		if (line.includes("●")) {
-			new_desc += line;
+			new_desc += line+". ";
 			continue;
 		}
 		
