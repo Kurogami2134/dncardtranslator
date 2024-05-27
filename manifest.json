@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Dueling Nexus Translator",
+  "version": "1.0",
+
+  "description": "Automatically translates card text in DuelingNexus.",
+
+  "icons": {
+    "48": "icon.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://duelingnexus.com/duel/*", 
+                  "https://duelingnexus.com/handtestmode"],
+      "js": ["jquery-3.7.1.js", "dntranslator.js"]
+    }
+  ],
+  
+   "permissions": ["activeTab", "storage", "*://yugipedia.com/*"],
+  
+  "options_ui": {
+    "page": "settings/options.html"
+  }
+}
